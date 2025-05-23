@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Shopping Cart</title>
+  <link rel="stylesheet" href="admin.css" />
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+  <!-- Firebase Config -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAiAxGsVbKp-lLwS_AuXIzPEa1D3B5gi5E",
+      authDomain: "shoppingcart-604eb.firebaseapp.com",
+      projectId: "shoppingcart-604eb",
+      storageBucket: "shoppingcart-604eb.firebasestorage.app",
+      messagingSenderId: "164798494170",
+      appId: "1:164798494170:web:c7fc3652bbd897f9c3fce3",
+      measurementId: "G-Z1T5450RY3"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+</head>
+
+<body>
+  <div class="admin-container">
+    <header>
+      <h1>Admin Dashboard</h1>
+      <div class="admin-nav">
+        <a href="index.html">Back to Store</a>
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="add-product-section">
+        <h2>Add New Product</h2>
+        <form id="addProductForm">
+          <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" id="productName" required placeholder="e.g. LD09 LOUNGE CHAIR">
+          </div>
+          
+          <div class="form-group">
+            <label for="productPrice">Price (₹)</label>
+            <input type="number" id="productPrice" required placeholder="e.g. 3999">
+          </div>
+          
+          <div class="form-group">
+            <label for="productImage">Image URL</label>
+            <input type="text" id="productImage" required placeholder="e.g. ./images/1.png">
+          </div>
+          
+          <div class="form-group">
+            <label for="productDescription">Description</label>
+            <textarea id="productDescription" rows="4" required placeholder="e.g. Comfortable lounge chair with premium fabric"></textarea>
+          </div>
+          
+          <button type="submit" class="add-btn">Add Product</button>
+        </form>
+      </section>
+      
+      <section class="product-list-section">
+        <h2>Current Products</h2>
+        <div id="productList" class="product-list">
+          <!-- Products will be loaded here -->
+          <div class="loading">Loading products...</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="notificationContainer" class="notification-container"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html> 

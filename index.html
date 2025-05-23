@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="style.css" />
+  <base href="./">
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+  <!-- Firebase Config -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAiAxGsVbKp-lLwS_AuXIzPEa1D3B5gi5E",
+      authDomain: "shoppingcart-604eb.firebaseapp.com",
+      projectId: "shoppingcart-604eb",
+      storageBucket: "shoppingcart-604eb.appspot.com",
+      messagingSenderId: "12000443904",
+      appId: "1:12000443904:web:c6b5e2844d2c9f4c2a2f4a"
+    };
+
+    // Initialize Firebase
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    // Configure Auth
+    firebase.auth().useDeviceLanguage();
+  </script>
+</head>
+
+<body>
+  <!-- Login Overlay -->
+  <div class="auth-overlay" id="authOverlay"></div>
+
+  <!-- Login Section (Initially Hidden) -->
+  <div class="auth-container" id="loginFormContainer" style="display: none;">
+    <!-- Login Form -->
+    <div class="login-container">
+      <h2>Login</h2>
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+      <button id="loginBtn">Login</button>
+      <p>Don't have an account? <a href="#" id="showRegister">Register</a></p>
+
+      <hr />
+      <button id="googleLoginBtn">
+        Login with Google
+      </button>
+    </div>
+
+    <!-- Register Form -->
+    <div class="register-container" style="display: none;">
+      <h2>Register</h2>
+      <input type="email" id="regEmail" placeholder="Email" />
+      <input type="password" id="regPassword" placeholder="Password" />
+      <button id="registerBtn">Register</button>
+      <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+    </div>
+  </div>
+
+  <!-- Logout Button -->
+  <button id="logoutBtn" style="display: none;">Logout</button>
+  
+  <!-- Admin Link (Only visible when logged in) -->
+  <a href="admin.html" id="adminLink" class="admin-link" style="display: none;">Admin Dashboard</a>
+
+  <!-- Shopping Cart Section -->
+  <div class="container">
+    <header class="header-bar">
+      <div class="title">PRODUCT LIST</div>
+      <div class="icon-wrapper">
+        <div class="icon-profile" id="profileIcon">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="profile" />
+        </div>
+        <div class="icon-cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span>0</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="listProduct"></div>
+  </div>
+
+  <div class="cartTab">
+    <h1>Shopping Cart</h1>
+    <div class="listCart"></div>
+    <div class="btn">
+      <button class="close">CLOSE</button>
+      <button class="checkOut">Check Out</button>
+    </div>
+  </div>
+
+  <!-- Main App Logic -->
+  <script src="app.js"></script>
+  <!-- Login/Auth Logic -->
+  <script src="login.js"></script>
+</body>
+</html> 
